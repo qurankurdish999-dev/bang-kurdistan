@@ -4,7 +4,251 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>کاتی بانگەکان</title>
-  <link rel="stylesheet" href="style.css">
+ <style> 
+  
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0b1118;
+  color: #fff;
+  direction: rtl;
+}
+
+.app {
+  width: min(100%, 600px);
+  margin: auto;
+  padding: 12px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings {
+  background: #26364a;
+  color: #f4c66a;
+  border: 1px solid #52647a;
+  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.country {
+  color: #aab8c8;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+h1 {
+  text-align: center;
+  color: #f4c66a;
+  font-size: 23px;
+  margin: 18px 0 10px;
+}
+
+#clock {
+  direction: ltr;
+  text-align: center;
+  color: #f4c66a;
+  font-size: clamp(40px, 11vw, 68px);
+  font-weight: 700;
+  margin: 12px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.date-box {
+  text-align: center;
+  color: #d5dfeb;
+  min-height: 28px;
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+.zikr-box {
+  background: #1b2a3c;
+  border: 1px solid #34465a;
+  border-radius: 13px;
+  padding: 15px 10px;
+  text-align: center;
+  color: #f4d58b;
+  font-size: 17px;
+  min-height: 60px;
+  margin-bottom: 15px;
+}
+
+#zikr {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.prayers {
+  background: #172536;
+  border: 1px solid #34465a;
+  border-radius: 14px;
+  padding: 10px;
+}
+
+.prayers h2 {
+  text-align: center;
+  color: #f4c66a;
+  font-size: 19px;
+  margin: 7px 0 10px;
+}
+
+.prayer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 7px;
+  border-bottom: 1px solid #34465a;
+  font-size: 16px;
+}
+
+.prayer:last-child {
+  border: none;
+}
+
+.prayer b {
+  color: #f4c66a;
+  direction: ltr;
+  font-variant-numeric: tabular-nums;
+}
+
+.prayer-status {
+  color: #aab8c8;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 8px 0;
+}
+
+.reminder {
+  color: #f4d58b;
+  text-align: center;
+  line-height: 1.8;
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+.settings-panel {
+  position: fixed;
+  inset: 5% 5%;
+  margin: auto;
+  max-width: 400px;
+  padding: 18px;
+  background: #1b2a3c;
+  border: 1px solid #f4c66a;
+  border-radius: 14px;
+  z-index: 10;
+  box-shadow: 0 10px 50px #000a;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.settings-panel[hidden] {
+  display: none;
+}
+
+.settings-panel h2,
+.settings-panel h3 {
+  color: #f4c66a;
+  text-align: center;
+}
+
+.settings-panel label {
+  display: block;
+  margin: 12px 0 6px;
+}
+
+.settings-panel select,
+.settings-panel input,
+.settings-panel button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 9px;
+  background: #26364a;
+  color: white;
+  border: 1px solid #52647a;
+  font-size: 15px;
+}
+
+.settings-panel button {
+  margin-top: 10px;
+  cursor: pointer;
+  background: #a77b30;
+  border: none;
+  font-weight: bold;
+}
+
+.settings-panel #resetTimes {
+  background: #52647a;
+}
+
+.note {
+  color: #b9c7d6;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* قەبارەی تایبەت بە مۆبایل */
+@media (max-width: 480px) {
+  .app {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 21px;
+    margin-top: 15px;
+  }
+
+  #clock {
+    font-size: clamp(36px, 10.5vw, 55px);
+    margin: 10px 0;
+  }
+
+  .zikr-box {
+    padding: 13px 8px;
+  }
+
+  .prayer {
+    padding: 10px 6px;
+  }
+}
+
+/* کاتێک بەرزی شاشە کەمە */
+@media (max-height: 750px) {
+  h1 {
+    margin-top: 10px;
+  }
+
+  #clock {
+    margin: 7px 0;
+  }
+
+  .date-box {
+    margin-bottom: 9px;
+  }
+
+  .zikr-box {
+    margin-bottom: 10px;
+  }
+
+  .prayer {
+    padding: 8px 6px;
+  }
+}
+   <style>
 </head>
 <body>
 
