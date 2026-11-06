@@ -1,107 +1,118 @@
-<link rel="stylesheet" href="style.css">
-<div class="app">
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>کاتی بانگەکان</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  <header class="top">
-    <button id="settingsBtn" class="settings" aria-label="ڕێکخستنەکان">⚙</button>
-    <span class="country">KURDISTAN</span>
-  </header>
+  <div class="app">
 
-  <main>
-    <h1>کاتی بانگەکانی <span id="cityTitle">سلێمانی</span></h1>
+    <header class="top">
+      <button id="settingsBtn" class="settings" aria-label="ڕێکخستنەکان">⚙</button>
+      <span class="country">KURDISTAN</span>
+    </header>
 
-    <div id="clock">00:00:00</div>
+    <main>
+      <h1>کاتی بانگەکانی <span id="cityTitle">سلێمانی</span></h1>
 
-    <div class="date-box">
-      <div id="dateText">بەروار</div>
+      <div id="clock">00:00:00</div>
+
+      <div class="date-box">
+        <div id="dateText">بەروار</div>
+      </div>
+
+      <div class="zikr-box">
+        <div id="zikr">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</div>
+      </div>
+
+      <section class="prayers">
+        <h2>کاتەکانی نوێژ</h2>
+
+        <div class="prayer"><span>الفجر</span><b id="show-fajr">--:--</b></div>
+        <div class="prayer"><span>الشروق</span><b id="show-sunrise">--:--</b></div>
+        <div class="prayer"><span>الظهر</span><b id="show-dhuhr">--:--</b></div>
+        <div class="prayer"><span>العصر</span><b id="show-asr">--:--</b></div>
+        <div class="prayer"><span>المغرب</span><b id="show-maghrib">--:--</b></div>
+        <div class="prayer"><span>العشاء</span><b id="show-isha">--:--</b></div>
+      </section>
+
+      <div id="prayerStatus" class="prayer-status">
+        چاوەڕوانی داتای کاتەکانی نوێژ...
+      </div>
+
+      <div id="reminder" class="reminder"></div>
+    </main>
+
+    <div id="settingsPanel" class="settings-panel" hidden>
+      <h2>ڕێکخستنەکان</h2>
+
+      <label for="city">شار / ناوچە</label>
+      <select id="city">
+        <option value="Slemany">سلێمانی</option>
+        <option value="Hawler">هەولێر</option>
+        <option value="Duhok">دهۆک</option>
+        <option value="Kirkuk">کەرکووک</option>
+        <option value="Halabja">هەڵەبجە</option>
+        <option value="Ranya">ڕانیە</option>
+        <option value="Qaladze">قەڵادزێ</option>
+        <option value="Dukan">دوکان</option>
+        <option value="Penjuin">پێنجوێن</option>
+        <option value="Darbandixan">دەربەندیخان</option>
+        <option value="Koya">کۆیە</option>
+        <option value="Soran">سۆران</option>
+        <option value="Chamchamal">چەمچەماڵ</option>
+        <option value="SaidSadiq">سەیدسادق</option>
+        <option value="Arbat">عەربەت</option>
+        <option value="Bazyan">بازیان</option>
+        <option value="TaqTaq">تەقتەق</option>
+        <option value="HajiAwa">حاجی ئاوا</option>
+        <option value="Chwarta">چوارتا</option>
+        <option value="Qaradax">قەرەداغ</option>
+        <option value="Kalar">کەلار</option>
+        <option value="Kfri">کفری</option>
+        <option value="Xanaqin">خانەقین</option>
+        <option value="Barznja">بەرزنجە</option>
+      </select>
+
+      <label for="format">شێوازی کاتژمێر</label>
+      <select id="format">
+        <option value="24">٢٤ کاتژمێر</option>
+        <option value="12">١٢ کاتژمێر</option>
+      </select>
+
+      <h3>دەستکاریکردنی کاتەکانی نوێژ</h3>
+      <p class="note">
+        ئەگەر کاتێک دەستکاری بکەیت، تەنها بۆ ئەو شارە پاشەکەوت دەبێت.
+      </p>
+
+      <label for="time-fajr">الفجر</label>
+      <input type="time" id="time-fajr">
+
+      <label for="time-sunrise">الشروق</label>
+      <input type="time" id="time-sunrise">
+
+      <label for="time-dhuhr">الظهر</label>
+      <input type="time" id="time-dhuhr">
+
+      <label for="time-asr">العصر</label>
+      <input type="time" id="time-asr">
+
+      <label for="time-maghrib">المغرب</label>
+      <input type="time" id="time-maghrib">
+
+      <label for="time-isha">العشاء</label>
+      <input type="time" id="time-isha">
+
+      <button id="saveSettings">پاشەکەوتکردن</button>
+      <button id="resetTimes">گەڕاندنەوەی کاتە سەرەکییەکان</button>
+      <button id="closeSettings">داخستن</button>
     </div>
 
-    <div class="zikr-box">
-      <div id="zikr">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</div>
-    </div>
-
-    <section class="prayers">
-      <h2>کاتەکانی نوێژ</h2>
-
-      <div class="prayer"><span>الفجر</span><b id="show-fajr">--:--</b></div>
-      <div class="prayer"><span>الشروق</span><b id="show-sunrise">--:--</b></div>
-      <div class="prayer"><span>الظهر</span><b id="show-dhuhr">--:--</b></div>
-      <div class="prayer"><span>العصر</span><b id="show-asr">--:--</b></div>
-      <div class="prayer"><span>المغرب</span><b id="show-maghrib">--:--</b></div>
-      <div class="prayer"><span>العشاء</span><b id="show-isha">--:--</b></div>
-    </section>
-
-    <div id="prayerStatus" class="prayer-status">
-      چاوەڕوانی داتای کاتەکانی نوێژ...
-    </div>
-
-    <div id="reminder" class="reminder"></div>
-  </main>
-
-  <div id="settingsPanel" class="settings-panel" hidden>
-    <h2>ڕێکخستنەکان</h2>
-
-    <label for="city">شار / ناوچە</label>
-    <select id="city">
-      <option value="Slemany">سلێمانی</option>
-      <option value="Hawler">هەولێر</option>
-      <option value="Duhok">دهۆک</option>
-      <option value="Kirkuk">کەرکووک</option>
-      <option value="Halabja">هەڵەبجە</option>
-      <option value="Ranya">ڕانیە</option>
-      <option value="Qaladze">قەڵادزێ</option>
-      <option value="Dukan">دوکان</option>
-      <option value="Penjuin">پێنجوێن</option>
-      <option value="Darbandixan">دەربەندیخان</option>
-      <option value="Koya">کۆیە</option>
-      <option value="Soran">سۆران</option>
-      <option value="Chamchamal">چەمچەماڵ</option>
-      <option value="SaidSadiq">سەیدسادق</option>
-      <option value="Arbat">عەربەت</option>
-      <option value="Bazyan">بازیان</option>
-      <option value="TaqTaq">تەقتەق</option>
-      <option value="HajiAwa">حاجی ئاوا</option>
-      <option value="Chwarta">چوارتا</option>
-      <option value="Qaradax">قەرەداغ</option>
-      <option value="Kalar">کەلار</option>
-      <option value="Kfri">کفری</option>
-      <option value="Xanaqin">خانەقین</option>
-      <option value="Barznja">بەرزنجە</option>
-    </select>
-
-    <label for="format">شێوازی کاتژمێر</label>
-    <select id="format">
-      <option value="24">٢٤ کاتژمێر</option>
-      <option value="12">١٢ کاتژمێر</option>
-    </select>
-
-    <h3>دەستکاریکردنی کاتەکانی نوێژ</h3>
-    <p class="note">
-      ئەگەر کاتێک دەستکاری بکەیت، تەنها بۆ ئەو شارە پاشەکەوت دەبێت.
-    </p>
-
-    <label for="time-fajr">الفجر</label>
-    <input type="time" id="time-fajr">
-
-    <label for="time-sunrise">الشروق</label>
-    <input type="time" id="time-sunrise">
-
-    <label for="time-dhuhr">الظهر</label>
-    <input type="time" id="time-dhuhr">
-
-    <label for="time-asr">العصر</label>
-    <input type="time" id="time-asr">
-
-    <label for="time-maghrib">المغرب</label>
-    <input type="time" id="time-maghrib">
-
-    <label for="time-isha">العشاء</label>
-    <input type="time" id="time-isha">
-
-    <button id="saveSettings">پاشەکەوتکردن</button>
-    <button id="resetTimes">گەڕاندنەوەی کاتە سەرەکییەکان</button>
-    <button id="closeSettings">داخستن</button>
   </div>
 
-</div>
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
+</body>
+</html>
