@@ -1,2 +1,2 @@
 # bang-kurdistan
-Prayer Times in Kurdistan
+Prayer Times for Kurdistan
